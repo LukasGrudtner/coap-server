@@ -84,3 +84,16 @@ This can be found at https://libcoap.net/doc/reference/4.2.0/
 fetches `/.well-known/core`
 
 * CoAP logging can be enabled by running 'idf.py menuconfig -> Component config -> CoAP Configuration' and setting appropriate log level
+
+## Common Error
+If IDF monitor fails shortly after the upload, or you see **random garbage**, your board is likely using a 26 MHz crystal. Most development board designs use 40 MHz, so ESP-IDF uses this frequency as a default value.
+
+If you have such a problem, do the following:
+
+1. Exit the monitor.
+2. Go back to **menuconfig**.
+3. Go to Component config –> ESP32-specific –> Main XTAL frequency, then change **CONFIG_ESP32_XTAL_FREQ_SEL** to 26 MHz.
+4. After that, **build and flash** the application again.
+
+#### Reference
+[ESP-IDF - Flash onto the Device](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/#step-9-flash-onto-the-device)

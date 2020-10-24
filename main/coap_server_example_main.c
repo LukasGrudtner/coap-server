@@ -157,6 +157,7 @@ verify_cn_callback(const char *cn,
                    void *arg
                   )
 {
+    ESP_LOGE(TAG, "Check certificate...");
     coap_log(LOG_INFO, "CN '%s' presented by server (%s)\n",
              cn, depth ? "CA" : "Certificate");
     return 1;
